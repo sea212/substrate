@@ -210,6 +210,7 @@ pub trait SimpleSlotWorker<B: BlockT> {
 
 		let proposing_remaining_duration = self.proposing_remaining_duration(&slot_info);
 
+		/*
 		let proposing_remaining = if proposing_remaining_duration == Duration::default() {
 			debug!(
 				target: logging_target,
@@ -220,6 +221,9 @@ pub trait SimpleSlotWorker<B: BlockT> {
 		} else {
 			Delay::new(proposing_remaining_duration)
 		};
+		*/
+
+		let proposing_remaining = Delay::new(proposing_remaining_duration);
 
 		let epoch_data = match self.epoch_data(&slot_info.chain_head, slot) {
 			Ok(epoch_data) => epoch_data,
