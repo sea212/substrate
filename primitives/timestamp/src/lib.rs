@@ -231,11 +231,11 @@ impl sp_inherents::InherentDataProvider for InherentDataProvider {
 	) -> Result<(), sp_inherents::Error> {
 		let timestamp = self.timestamp;
 
-		// ICEFROG HOTFIX: mutate timestamp to make it revert back in time and have slots
+		// BATTERY STATION HOTFIX: mutate timestamp to make it revert back in time and have slots
 		// happen at 3x their speed from then until we have caught up with the present time.
 
-		const REVIVE_TIMESTAMP: u64 = 1637240235198;
-		const FORK_TIMESTAMP: u64 = 1637323200000;
+		const REVIVE_TIMESTAMP: u64 = 1637409600000; // Fri Nov 20 2021 12:00:00 GMT+0000 (Western European Standard Time)
+		const FORK_TIMESTAMP: u64 = 1637240235198; // Thu Nov 18 2021 12:57:15 GMT+0000 (Western European Standard Time)
 		const WARP_FACTOR: u64 = 3;
 
 		let time_since_revival = timestamp.saturating_sub(REVIVE_TIMESTAMP);
